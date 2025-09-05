@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="560" viewBox="0 0 640 560" xmlns="http://www.w3.org/2000/svg">
+  <!-- ========== CONFIG ==========
+       Board: 8x8, square size = 60
+       Board area: 480x480, top-left at (80, 40)
+       Files a-h left→right, ranks 8-1 top→bottom
+       Pieces positioned by text (Unicode) with dominant-baseline=middle
+       ============================= -->
+
+  <defs>
+    <!-- Checkerboard pattern 2x2 repeated to fill 8x8 -->
+    <pattern id="checker" width="120" height="120" patternUnits="userSpaceOnUse">
+      <rect width="60" height="60" fill="#EEEED2"/>
+      <rect x="60" width="60" height="60" fill="#769656"/>
+      <rect y="60" width="60" height="60" fill="#769656"/>
+      <rect x="60" y="60" width="60" height="60" fill="#EEEED2"/>
+    </pattern>
+
+    <!-- Wood grain background -->
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b5a2b"/>
+      <stop offset="100%" stop-color="#5d3a14"/>
+    </linearGradient>
+
+    <style>
+      .frame { fill: url(#wood); }
+      .board { fill: url(#checker); }
+      .coords { fill: #cfc7b7; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; font-size: 14px; opacity: .85; }
+      .piece { font-size: 42px; text-anchor: middle; dominant-baseline: middle; }
+      .white { fill: #ffffff; filter: drop-shadow(0 1px 0 rgba(0,0,0,.6)); }
+      .black { fill: #111111; filter: drop-shadow(0 1px 0 rgba(255,255,255,.25)); }
+      .title { fill: #f5f5f5; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; font-size: 18px; letter-spacing: .5px; }
+      .mate { fill: #ffec99; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; font-size: 24px; text-anchor: middle; opacity: 0; }
+      .glow { filter: drop-shadow(0 0 6px rgba(255, 255, 128, .9)); }
+      /* fallback if chess glyphs missing */
+      .piece { font-family: "Segoe UI Symbol", "Noto Sans Symbols2", "DejaVu Sans", "Apple Color Emoji", Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Wooden frame -->
+  <rect x="40" y="0" width="560" height="560" rx="22" class="frame"/>
+  <rect x="60" y="20" width="520" height="520" rx="18" fill="rgba(0,0,0,.18)"/>
+
+  <!-- Title -->
+  <text x="320" y="28" class="title" text-anchor="middle">Animated Chess · Scholar’s Mate</text>
+
+  <!-- Board area -->
+  <g id="board" transform="translate(80,40)">
+    <!-- Outer border -->
+    <rect x="-6" y="-6" width="492" height="492" fill="none" stroke="rgba(0,0,0,.55)" stroke-width="8" rx="10"/>
+    <!-- 8x8 board -->
+    <rect x="0" y="0" width="480" height="480" class="board"/>
+
+    <!-- Coordinates (ranks) -->
+    <!-- Left ranks 8..1 -->
+    <g class="coords" text-anchor="end">
+      <text x="-10" y="30">8</text>
+      <text x="-10" y="90">7</text>
+      <text x="-10" y="150">6</text>
+      <text x="-10" y="210">5</text>
+      <text x="-10" y="270">4</text>
+      <text x="-10" y="330">3</text>
+      <text x="-10" y="390">2</text>
+      <text x="-10" y="450">1</text>
+    </g>
+
+    <!-- Bottom files a..h -->
+    <g class="coords" text-anchor="middle">
+      <text x="30"  y="500">a</text>
+      <text x="90"  y="500">b</text>
+      <text x="150" y="500">c</text>
+      <text x="210" y="500">d</text>
+      <text x="270" y="500">e</text>
+      <text x="330" y="500">f</text>
+      <text x="390" y="500">g</text>
+      <text x="450" y="500">h</text>
+    </g>
+
+    <!-- ========= PIECES =========
+         Helper: cx = file*60 + 30, cy = rank*60 + 30
+         file: a=0..h=7, rank: 8(top)=0 .. 1(bottom)=7
+    -->
+
+    <!-- Black back rank -->
+    <text id="br_a8" class="piece black" x="30"  y="30">♜</text>
+    <text id="bn_b8" class="piece black" x="90"  y="30">♞</text>
+    <text id="bb_c8" class="piece black" x="150" y="30">♝</text>
+    <text id="bq_d8" class="piece black" x="210" y="30">♛</text>
+    <text id="bk_e8" class="piece black" x="270" y="30">♚</text>
+    <text id="bb_f8" class="piece black" x="330" y="30">♝</text>
+    <text id="bn_g8" class="piece black" x="390" y="30">♞</text>
+    <text id="br_h8" class="piece black" x="450" y="30">♜</text>
+
+    <!-- Black pawns (rank 7) -->
+    <text id="bp_a7" class="piece black" x="30"  y="90">♟</text>
+    <text id="bp_b7" class="piece black" x="90"  y="90">♟</text>
+    <text id="bp_c7" class="piece black" x="150" y="90">♟</text>
+    <text id="bp_d7" class="piece black" x="210" y="90">♟</text>
+    <text id="bp_e7" class="piece black" x="270" y="90">♟</text>
+    <text id="bp_f7" class="piece black" x="330" y="90">♟</text>
+    <text id="bp_g7" class="piece black" x="390" y="90">♟</text>
+    <text id="bp_h7" class="piece black" x="450" y="90">♟</text>
+
+    <!-- White back rank -->
+    <text id="wr_a1" class="piece white" x="30"  y="450">♖</text>
+    <text id="wn_b1" class="piece white" x="90"  y="450">♘</text>
+    <text id="wb_c1" class="piece white" x="150" y="450">♗</text>
+    <text id="wq_d1" class="piece white" x="210" y="450">♕</text>
+    <text id="wk_e1" class="piece white" x="270" y="450">♔</text>
+    <text id="wb_f1" class="piece white" x="330" y="450">♗</text>
+    <text id="wn_g1" class="piece white" x="390"  y="450">♘</text>
+    <text id="wr_h1" class="piece white" x="450" y="450">♖</text>
+
+    <!-- White pawns (rank 2) -->
+    <text id="wp_a2" class="piece white" x="30"  y="390">♙</text>
+    <text id="wp_b2" class="piece white" x="90"  y="390">♙</text>
+    <text id="wp_c2" class="piece white" x="150" y="390">♙</text>
+    <text id="wp_d2" class="piece white" x="210" y="390">♙</text>
+    <text id="wp_e2" class="piece white" x="270" y="390">♙</text>
+    <text id="wp_f2" class="piece white" x="330" y="390">♙</text>
+    <text id="wp_g2" class="piece white" x="390" y="390">♙</text>
+    <text id="wp_h2" class="piece white" x="450" y="390">♙</text>
+
+    <!-- ======== ANIMASI LANGKAH ======== -->
+    <!-- 1. e4: white pawn e2 (file 4, rank 2 -> e4 rank 4), dy = -120 -->
+    <animateTransform
+      id="a1"
+      xlink:href="#wp_e2"
+      attributeName="transform"
+      type="translate"
+      from="0 0"
+      to="0 -120"
+      begin="0s"
+      dur="0.9s"
+      fill="freeze"/>
+
+    <!-- ... e5: black pawn e7 -> e5, dy = +120 -->
+    <animateTransform
+      id="a2"
+      xlink:href="#bp_e7"
+      attributeName="transform"
+      type="translate"
+      from="0 0"
+      to="0 120"
+      begin="a1.end + 0.3s"
+      dur="0.9s"
+      fill="freeze"/>
+
+    <!-- 2. Qh5: white queen d1 -> h5, dx=+240, dy=-240 -->
+    <animateTransform
+      id="a3"
+      xlink:href="#wq_d1"
+      attributeName="transform"
+      type="translate"
+      from="0 0"
+      to="240 -240"
+      begin="a2.end + 0.3s"
+      dur="1s"
+      fill="freeze"/>
+
+    <!-- ... Nc6: black knight b8 -> c6, dx=+60, dy=+120 -->
+    <animateTransform
+      id="a4"
+      xlink:href="#bn_b8"
+      attributeName="transform"
+      type="translate"
+      from="0 0"
+      to="60 120"
+      begin="a3.end + 0.3s"
+      dur="0.8s"
+      fill="freeze"/>
+
+    <!-- 3. Bc4: white bishop f1 -> c4, dx=-180, dy=-180 -->
+    <animateTransform
+      id="a5"
+      xlink:href="#wb_f1"
+      attributeName="transform"
+      type="translate"
+      from="0 0"
+      to="-180 -180"
+      begin="a4.end + 0.3s"
+      dur="0.9s"
+      fill="freeze"/>
+
+    <!-- ... Nf6: black knight g8 -> f6, dx=-60, dy=+120 -->
+    <animateTransform
+      id="a6"
+      xlink:href="#bn_g8"
+      attributeName="transform"
+      type="translate"
+      from="0 0"
+      to="-60 120"
+      begin="a5.end + 0.3s"
+      dur="0.8s"
+      fill="freeze"/>
+
+    <!-- 4. Qxf7#: queen h5 -> f7 (capture), dx=-120, dy=-120 -->
+    <animateTransform
+      id="a7"
+      xlink:href="#wq_d1"
+      attributeName="transform"
+      type="translate"
+      from="240 -240"
+      to="120 -360"
+      begin="a6.end + 0.3s"
+      dur="0.9s"
+      fill="freeze"/>
+
+    <!-- Captured pawn f7 disappears -->
+    <animate
+      xlink:href="#bp_f7"
+      attributeName="opacity"
+      from="1" to="0"
+      begin="a7.end"
+      dur="0.2s"
+      fill="freeze"/>
+
+    <!-- Highlight mate square (f7) -->
+    <rect id="mateSquare" x="300" y="60" width="60" height="60" fill="#ffcc00" opacity="0" rx="6"/>
+    <animate xlink:href="#mateSquare" attributeName="opacity" from="0" to="0.35" begin="a7.end" dur="0.2s" fill="freeze"/>
+
+    <!-- Checkmate text -->
+    <text id="mateText" x="240" y="240" class="mate glow">Checkmate!</text>
+    <animate xlink:href="#mateText" attributeName="opacity" from="0" to="1" begin="a7.end + 0.1s" dur="0.3s" fill="freeze"/>
+
+  </g>
+
+  <!-- Footer note -->
+  <text x="320" y="548" class="coords" text-anchor="middle">SVG-only, no JS – works in GitHub README</text>
+</svg>
