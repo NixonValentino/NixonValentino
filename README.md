@@ -23,8 +23,6 @@ Saya Merupakan Siswa SMKN 26<br>Saya Menekuni Programmer di Bidang Frontend
 
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
 
-<p align="center">
-  <img src="./chess.svg" alt="Animated Chess" width="480" />
-</p>
+
 
 
